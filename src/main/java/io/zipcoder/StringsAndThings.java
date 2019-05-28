@@ -1,6 +1,9 @@
 package io.zipcoder;
 
 
+
+import com.sun.deploy.util.StringUtils;
+import java.lang.Object;
 /**
  * @author tariq
  */
@@ -15,7 +18,14 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        Integer counter = 0;
+        String[] x = input.split(" ");
+        for (String y : x) {
+            if (y.charAt(x.length) == 'z' || y.charAt(x.length) == 'y') {
+                counter++;
+            }
+        }
+        return counter;
     }
 
     /**
@@ -24,11 +34,12 @@ public class StringsAndThings {
      * Remove only non-overlapping instances, so with "xxx" removing "xx" leaves "x".
      *
      * example : removeString("Hello there", "llo") // Should return "He there"
-     *           removeString("Hello there", "e") //  Should return "Hllo thr"
+     *           removeS,tring("Hello there", "e") //  Should return "Hllo thr"
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        String result = base.replaceAll(remove,"");
+        return result;
     }
 
     /**
@@ -40,7 +51,27 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+            int lastIndex = 0;
+            int countIs = 0;
+            int countNot = 0;
+            while (lastIndex != -1) {
+                lastIndex = input.indexOf("is",lastIndex);
+                if (lastIndex != -1) {
+                    countIs++;
+                    lastIndex += input.length();
+                }
+            }
+            lastIndex = 0;
+        while (lastIndex != -1) {
+            lastIndex = input.indexOf("not",lastIndex);
+            if (lastIndex != -1) {
+                countNot++;
+                lastIndex += input.length();
+            }
+        }
+            if(countIs == countNot) {return true;}
+            else {return false;}
+
     }
 
     /**
@@ -51,7 +82,14 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        boolean gIsHappy = false;
+        String [] inputArr = input.split("");
+        for (int i = 1; i <inputArr.length - 1 ; i++) {
+            if (inputArr[i].equals("g") && inputArr[i-1].equals("g") && inputArr[i-1].equals("g")) {
+                gIsHappy = true;
+            }
+        }
+        return gIsHappy;
     }
 
 
@@ -63,6 +101,13 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        Integer result = 0;
+        String [] inputArr = input.split("");
+        for (int i = 1; i <inputArr.length - 1 ; i++) {
+            if(inputArr[i].equals(inputArr[i-1]) && inputArr[i].equals(inputArr[i+1])) {
+                result++;
+            }
+        }
+        return result;
     }
 }
